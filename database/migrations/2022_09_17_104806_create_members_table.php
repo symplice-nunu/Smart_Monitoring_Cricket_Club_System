@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('MartalStatus');
             $table->string('MembershipType');
             $table->string('Roles');
+            $table->string('Status');
             $table->timestamps();
         });
     }

@@ -118,18 +118,49 @@
                   <p>Dashboard</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="./index2.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Playground Manager</p>
+                </a>
+              </li> -->
+              
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Managers
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('managers.index') }}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Managers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('stadiumManager') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Stadium Manager</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('playgroundManager') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Playground Manager</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('managers.index') }}" class="nav-link active">
-                  <i class="nav-icon fas fa-book"></i>
-                  <p>Stadium Manager</p>
+                <a href="{{ url('clubManager') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Club Manager</p>
                 </a>
               </li>
+              
             </ul>
           </li>
           <!-- <li class="nav-item">
@@ -339,6 +370,18 @@
 		        <div class="form-group">
 		            <strong>Address</strong>
 		            <input type="text" name="Address" class="form-control" placeholder="Address">
+		        </div>
+		    </div>
+        
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Manager Type</strong>
+		            <select name="ManagerType" id="" class="form-control">
+                        <option value="">Select Manager Type</option>
+                        <option value="Club Manager">Club Manager</option>
+                        <option value="Stadium Manager">Stadium Manager</option>
+                        <option value="Playground Manager">Playground Manager</option>
+                    </select>
 		        </div>
 		    </div>
 		    

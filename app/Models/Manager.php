@@ -31,7 +31,7 @@ class Manager extends Model
      */protected $table = 'managers';
 
     protected $fillable = [
-        'FirstName','LastName','Gender','Email','Country','Phone','Address'
+        'FirstName','LastName','Gender','Email','Country','Phone','Address','ManagerType'
 
     ];
 

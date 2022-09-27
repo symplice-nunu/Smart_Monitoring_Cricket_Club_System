@@ -344,7 +344,7 @@
                 <option value="Club Manager">Club Manager</option>
             </select>
                   </div>
-				  <input type="hidden" value="2" name="Status">
+                  <input type="hidden" value="2" name="Status">
                   
                 <!-- /.card-body -->
 

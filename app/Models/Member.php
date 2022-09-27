@@ -31,7 +31,7 @@ class Member extends Model
      */
 
     protected $fillable = [
-        'FirstName','LastName','Gender','Email','Country','Phone','Address','MartalStatus','MembershipType','Roles'
+        'FirstName','LastName','Gender','Email','Country','Phone','Address','MartalStatus','MembershipType','Roles','Status'
 
     ];
 

@@ -151,13 +151,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link active">
+                <a href="pages/layout/top-nav.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>New Member</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('members') }}" class="nav-link">
+                <a href="{{ url('members') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Members List</p>
                 </a>
@@ -238,125 +238,257 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">New Member</h1>
+            <h1 class="m-0">Members</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">	New Member</li>
+              <li class="breadcrumb-item active">Members</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    <div class="container">
+  
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">New Member</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          
+
+
+
+<div class="row">
+
     
+@if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+
+    <form action="{{ route('members.store') }}" method="POST">
+    	@csrf
+
+
+         <div class="row">
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>First Name</strong>
+		            <input type="text" name="FirstName" class="form-control" placeholder="First Name">
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Last Name</strong>
+		            <input type="text" name="LastName" class="form-control" placeholder="Last Name">
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Gender</strong>
+                    <select name="Gender" id="" class="form-control">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Email</strong>
+		            <input type="email" name="Email" class="form-control" placeholder="Email">
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Country</strong>
+                    
+                    <select name="Country" id="" class="form-control">
+                        <option value="">Select Country</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="Burundi">Burundi</option>
+                    </select>
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Phone</strong>
+		            <input type="text" name="Phone" class="form-control" placeholder="Phone">
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Address</strong>
+		            <input type="text" name="Address" class="form-control" placeholder="Address">
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Martal Status</strong>
+                    <select name="MartalStatus" id="" class="form-control">
+                        <option value="">Select Martal Status</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Spouce">Spouce</option>
+                    </select>
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Membership Type</strong>
+                    <select name="MembershipType" id="" class="form-control">
+                        <option value="">Select Membership Type</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Roles</strong>
+                    <select name="Roles" id="" class="form-control">
+                        <option value="">Select Roles</option>
+                        <option value="Capitain">Capitain</option>
+                        <option value="Club Manager">Club Manager</option>
+                    </select>
+		        </div>
+		    </div>
+		    <!-- <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+		            <button type="submit" class="btn btn-primary">Submit</button>
+		    </div> -->
+		</div>
+
+
+    
+    
+
+</div>
+
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
     <!-- Main content -->
     <section class="content">
       <div class="container">
-        <div class="card" style="padding: 1em; padding-left: 15em;">
+        <div class="card" style="padding: 1em;">
           
 <div class="row">
 
-	
+<div class="col-lg-12 margin-tb">
 
-@if ($errors->any())
-<div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
+    <div class="pull-left">
+
+        <h2>Un Approved Application List</h2>
+
+    </div>
+
+    <div class="pull-right" style="margin-bottom: 1em;">
+
+        <!-- <a class="btn btn-success" href="{{ route('users.create') }}"> </a> -->
+        <button type="button" class="btn btn-success">
+        <i class="fas fa-download"></i> Download 
+  </button>
+    </div>
+
 </div>
+
+</div>
+@if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+
+@if ($message = Session::get('success'))
+
+<div class="alert alert-success">
+
+<p>{{ $message }}</p>
+
+</div>
+
 @endif
 
 
-<div class="card card-primary col-xs-8 col-sm-8">
-              <div class="card-header">
-                <h3 class="card-title">New Member</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form action="{{ route('members.store') }}" method="POST">
-@csrf
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">First Name</label>
-					<input type="text" name="FirstName" class="form-control"  placeholder="First Name">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Last Name</label>
-                    <input type="text" name="LastName" class="form-control"  placeholder="Last Name">
-                  </div>
-				  
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Gender</label>
-                    <select name="Gender" id="" class="form-control" value="">
-                <option value="">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Email</label>
-                    <input type="email" name="Email" class="form-control" value="" placeholder="Email">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Country</label>
-                    <select name="Country" id="" class="form-control" value="">
-                <option value="">Select Country</option>
-                <option value="Rwanda">Rwanda</option>
-                <option value="Burundi">Burundi</option>
-            </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Phone</label>
-                    <input type="text" name="Phone" class="form-control" placeholder="Phone">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Address</label>
-                    <input type="text" name="Address" class="form-control"  placeholder="Address">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Martal Status</label>
-                    <select name="MartalStatus" id="" class="form-control" value="">
-                <option value="">Select Martal Status</option>
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
-                <option value="Spouce">Spouce</option>
-            </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Membership Type</label>
-                    <select name="MembershipType" id="" class="form-control" value="">
-                <option value="">Select Membership Type</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
-                  </div>
-				  <div class="form-group">
-                    <label for="exampleInputPassword1">Roles</label>
-                    <select name="Roles" id="" class="form-control" value="">
-                <option value="">Select Roles</option>
-                <option value="Capitain">Capitain</option>
-                <option value="Club Manager">Club Manager</option>
-            </select>
-                  </div>
-				  <input type="hidden" value="2" name="Status">
-                  
-                <!-- /.card-body -->
 
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-success"> <i class="fas fa-save"></i> Submit</button>
-				 &nbsp; <a href="{{ route('members.index') }}" class="btn btn-primary" > <i class="fas fa-arrow-left"></i> Back</a>
-                </div>
-              </form>
-            </div>
+<table class="table table-bordered">
 
+<tr>
+    <th>No</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Gender</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Address</th>
+    <th>Martal Status</th>
+    <!-- <th>Membership Type</th> -->
+    <th>Roles</th>
+    <!-- <th width="190px">Action</th> -->
+</tr>
 
-</div>
+@foreach ($members as $member)
+<tr>
+  <?php
+if($member->Status == 0){
+  ?>
+  <td>{{ ++$i }}</td>
+  <td>{{ $member->FirstName }}</td>
+  <td>{{ $member->LastName }}</td>
+  <td>{{ $member->Gender }}</td>
+  <td>{{ $member->Email }}</td>
+  <!-- <td>{{ $member->Country }}</td> -->
+  <td>{{ $member->Phone }}</td>
+  <td>{{ $member->Address }}</td>
+  <td>{{ $member->MartalStatus }}</td>
+  <!-- <td>{{ $member->MembershipType }}</td> -->
+  <td>{{ $member->Roles }}</td>
+  <?php } ?>
+  
+</tr>
+@endforeach
+
+</table>
+
+{!! $members->links() !!}
 
         </div>
       </div>

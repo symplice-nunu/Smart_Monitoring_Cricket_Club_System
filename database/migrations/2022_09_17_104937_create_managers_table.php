@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('Country');
             $table->string('Phone');
             $table->string('Address');
+            $table->string('ManagerType');
             $table->timestamps();
         });
     }

@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -151,13 +152,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link active">
+                <a href="pages/layout/top-nav.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>New Member</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('members') }}" class="nav-link">
+                <a href="{{ url('members') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Members List</p>
                 </a>
@@ -238,12 +239,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">New Member</h1>
+            <h1 class="m-0">Edit Member</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">	New Member</li>
+              <li class="breadcrumb-item active">Edit Member</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -274,54 +275,55 @@
 
 <div class="card card-primary col-xs-8 col-sm-8">
               <div class="card-header">
-                <h3 class="card-title">New Member</h3>
+                <h3 class="card-title">Edit Member</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{ route('members.store') }}" method="POST">
+              <form action="{{ route('members.update',$member->id) }}" method="POST">
 @csrf
+@method('PUT')
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">First Name</label>
-					<input type="text" name="FirstName" class="form-control"  placeholder="First Name">
+					<input type="text" name="FirstName" class="form-control" value="{{ $member->FirstName }}" placeholder="First Name">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Last Name</label>
-                    <input type="text" name="LastName" class="form-control"  placeholder="Last Name">
+                    <input type="text" name="LastName" class="form-control" value="{{ $member->LastName }}" placeholder="Last Name">
                   </div>
 				  
                   <div class="form-group">
                     <label for="exampleInputPassword1">Gender</label>
                     <select name="Gender" id="" class="form-control" value="">
-                <option value="">Select Gender</option>
+                <option value="{{ $member->Gender }}">{{ $member->Gender }}</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Email</label>
-                    <input type="email" name="Email" class="form-control" value="" placeholder="Email">
+                    <input type="email" name="Email" class="form-control" value="{{ $member->Email }}" placeholder="Email">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Country</label>
                     <select name="Country" id="" class="form-control" value="">
-                <option value="">Select Country</option>
+                <option value="{{ $member->Country }}">{{ $member->Country }}</option>
                 <option value="Rwanda">Rwanda</option>
                 <option value="Burundi">Burundi</option>
             </select>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Phone</label>
-                    <input type="text" name="Phone" class="form-control" placeholder="Phone">
+                    <input type="text" name="Phone" class="form-control" value="{{ $member->Phone }}" placeholder="Phone">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Address</label>
-                    <input type="text" name="Address" class="form-control"  placeholder="Address">
+                    <input type="text" name="Address" class="form-control" value="{{ $member->Address }}" placeholder="Address">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Martal Status</label>
                     <select name="MartalStatus" id="" class="form-control" value="">
-                <option value="">Select Martal Status</option>
+                <option value="{{ $member->MartalStatus }}">{{ $member->MartalStatus }}</option>
                 <option value="Single">Single</option>
                 <option value="Married">Married</option>
                 <option value="Spouce">Spouce</option>
@@ -330,7 +332,7 @@
                   <div class="form-group">
                     <label for="exampleInputPassword1">Membership Type</label>
                     <select name="MembershipType" id="" class="form-control" value="">
-                <option value="">Select Membership Type</option>
+                <option value="{{ $member->MembershipType }}">{{ $member->MembershipType }}</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -339,12 +341,11 @@
 				  <div class="form-group">
                     <label for="exampleInputPassword1">Roles</label>
                     <select name="Roles" id="" class="form-control" value="">
-                <option value="">Select Roles</option>
+                <option value="{{ $member->Roles }}">{{ $member->Roles }}</option>
                 <option value="Capitain">Capitain</option>
                 <option value="Club Manager">Club Manager</option>
             </select>
                   </div>
-				  <input type="hidden" value="2" name="Status">
                   
                 <!-- /.card-body -->
 

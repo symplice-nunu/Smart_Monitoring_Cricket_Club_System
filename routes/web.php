@@ -18,6 +18,14 @@ Auth::routes();
 Route::get('/Dashboard', [DashboardController::class, 'index'])->name('Dashboard');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['auth']], function() {
+    Route::get('/clubManager', [ManagerController::class, 'indexx'])->name('clubManager');
+    Route::get('/playgroundManager', [ManagerController::class, 'indexxx'])->name('playgroundManager');
+    Route::get('/stadiumManager', [ManagerController::class, 'indexxxx'])->name('stadiumManager');
+    Route::get('/waitingApproval', [MemberController::class, 'indexWaiting'])->name('waitingApproval');
+    Route::get('/denyApproval', [MemberController::class, 'indexDeny'])->name('denyApproval');
+    Route::get('/approved', [MemberController::class, 'indexApproved'])->name('approved');
+    Route::get('/updatee', [MemberController::class, 'updatee'])->name('updatee');
+    Route::get('generate-pdf', [MemberController::class, 'generatePDF']);
 
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);

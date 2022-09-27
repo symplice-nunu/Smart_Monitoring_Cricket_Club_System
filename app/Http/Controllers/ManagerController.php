@@ -32,6 +32,39 @@ class ManagerController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 5);
 
     }
+    public function indexx()
+
+    {
+
+        $managers = Manager::latest()->paginate(5);
+
+        return view('managers.indexx',compact('managers'))
+
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+
+    }
+    public function indexxx()
+
+    {
+
+        $managers = Manager::latest()->paginate(5);
+
+        return view('managers.indexxx',compact('managers'))
+
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+
+    }
+    public function indexxxx()
+
+    {
+
+        $managers = Manager::latest()->paginate(5);
+
+        return view('managers.indexxxx',compact('managers'))
+
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+
+    }
 
     public function create()
 
@@ -52,6 +85,7 @@ class ManagerController extends Controller
             'Country' => 'required',
             'Phone' => 'required',
             'Address' => 'required',
+            'ManagerType' => 'required',
 
         ]);
         Manager::create($request->all());
@@ -92,6 +126,7 @@ class ManagerController extends Controller
             'Country' => 'required',
             'Phone' => 'required',
             'Address' => 'required',
+            'ManagerType' => 'required',
         ]);
 
         $manager->update($request->all());

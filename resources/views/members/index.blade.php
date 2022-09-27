@@ -175,19 +175,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{ url('waitingApproval') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>New Application</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{ url('approved') }}" class="nav-link">
                   <i class="fas fa-check nav-icon"></i>
                   <p>Approved Application</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
+                <a href="{{ url('denyApproval') }}" class="nav-link">
                   <i class="fas fa-ban"></i>
                   <p>Denied Application</p>
                 </a>
@@ -373,6 +373,7 @@
                     </select>
 		        </div>
 		    </div>
+            <input type="hidden" value="2" name="Status">
 		    <!-- <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 		            <button type="submit" class="btn btn-primary">Submit</button>
 		    </div> -->

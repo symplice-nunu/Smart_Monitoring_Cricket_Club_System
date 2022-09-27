@@ -320,8 +320,18 @@
                     <label for="exampleInputPassword1">Address</label>
                     <input type="text" name="Address" class="form-control" value="{{ $manager->Address }}" placeholder="Address">
                   </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Manager Type</label>
+                    <select name="ManagerType" id="" class="form-control" value="{{ $manager->ManagerType }}">
+                        <option value="{{ $manager->ManagerType }}">{{ $manager->ManagerType }}</option>
+                        <option value="Club Manager">Club Manager</option>
+                        <option value="Stadium Manager">Stadium Manager</option>
+                        <option value="Playground Manager">Playground Manager</option>
+                    </select>
+                  </div>
                  
                   
+                 
                 <!-- /.card-body -->
 
                 <div class="card-footer">

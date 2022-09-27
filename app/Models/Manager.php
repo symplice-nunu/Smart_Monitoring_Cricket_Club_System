@@ -28,7 +28,7 @@ class Manager extends Model
 
      * @var array
 
-     */
+     */protected $table = 'managers';
 
     protected $fillable = [
         'FirstName','LastName','Gender','Email','Country','Phone','Address'

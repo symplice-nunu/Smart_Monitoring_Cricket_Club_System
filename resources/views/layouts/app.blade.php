@@ -26,8 +26,10 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 </head>
 
@@ -39,11 +41,11 @@
 
             <div class="container">
 
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <!-- <a class="navbar-brand" href="{{ url('/') }}">
 
                 smccs
 
-                </a>
+                </a> -->
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -69,9 +71,9 @@
 
                         @guest
 
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                            <!-- <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
 
-                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li> -->
 
                         @else
 
@@ -80,6 +82,8 @@
                             <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
 
                             <li><a class="nav-link" href="{{ route('members.index') }}">Manage Member</a></li>
+
+                            <li><a class="nav-link" href="{{ route('managers.index') }}">Manage Manager</a></li>
 
                             <li class="nav-item dropdown">
 
@@ -91,7 +95,7 @@
 
 
 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
 

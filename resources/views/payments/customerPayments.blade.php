@@ -1,12 +1,12 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sccms</title>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -204,7 +204,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
             </a>
           </li> -->
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Members
@@ -219,7 +219,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('members') }}" class="nav-link active">
+                <a href="{{ url('members') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Members List</p>
                 </a>
@@ -237,7 +237,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('waitingApproval') }}" class="nav-link">
+                <a href="{{ url('waitingApproval') }}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>New Application</p>
                 </a>
@@ -314,7 +314,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ url('stripe') }}" class="nav-link">
+                    <a href="{{ url('stripe') }}" class="nav-link active">
                       <i class="fas fa-wallet nav-icon"></i>
                       <p>Make Payment</p>
                     </a>
@@ -341,129 +341,121 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Edit Member</h1>
+            <h1 class="m-0">Members</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Edit Member</li>
+              <li class="breadcrumb-item active">Members</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+<div class="container">
     
-    <!-- Main content -->
-    <section class="content">
-      <div class="container">
-        <div class="card" style="padding: 1em; padding-left: 15em;">
-          
-<div class="row">
-
-	
-
-@if ($errors->any())
-<div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
-
-
-<div class="card card-primary col-xs-8 col-sm-8">
-              <div class="card-header">
-                <h3 class="card-title">Edit Member</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form action="{{ route('members.update',$member->id) }}" method="POST">
-@csrf
-@method('PUT')
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">First Name</label>
-					<input type="text" name="FirstName" class="form-control" value="{{ $member->FirstName }}" placeholder="First Name">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Last Name</label>
-                    <input type="text" name="LastName" class="form-control" value="{{ $member->LastName }}" placeholder="Last Name">
-                  </div>
-				  
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Gender</label>
-                    <select name="Gender" id="" class="form-control" value="">
-                <option value="{{ $member->Gender }}">{{ $member->Gender }}</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Email</label>
-                    <input type="email" name="Email" class="form-control" value="{{ $member->Email }}" placeholder="Email">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Country</label>
-                    <select name="Country" id="" class="form-control" value="">
-                <option value="{{ $member->Country }}">{{ $member->Country }}</option>
-                <option value="Rwanda">Rwanda</option>
-                <option value="Burundi">Burundi</option>
-            </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Phone</label>
-                    <input type="text" name="Phone" class="form-control" value="{{ $member->Phone }}" placeholder="Phone">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Address</label>
-                    <input type="text" name="Address" class="form-control" value="{{ $member->Address }}" placeholder="Address">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Martal Status</label>
-                    <select name="MartalStatus" id="" class="form-control" value="">
-                <option value="{{ $member->MartalStatus }}">{{ $member->MartalStatus }}</option>
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
-                <option value="Spouce">Spouce</option>
-            </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Membership Type</label>
-                    <select name="MembershipType" id="" class="form-control" value="">
-                <option value="{{ $member->MembershipType }}">{{ $member->MembershipType }}</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
-                  </div>
-				  <div class="form-group">
-                    <label for="exampleInputPassword1">Roles</label>
-                    <select name="Roles" id="" class="form-control" value="">
-                <option value="{{ $member->Roles }}">{{ $member->Roles }}</option>
-                <option value="Capitain">Capitain</option>
-                <option value="Club Manager">Club Manager</option>
-            </select>
-                  </div>
-                  
-                <!-- /.card-body -->
-
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-success"> <i class="fas fa-save"></i> Submit</button>
-				 &nbsp; <a href="{{ route('members.index') }}" class="btn btn-primary" > <i class="fas fa-arrow-left"></i> Back</a>
+    <!-- <h1 align="center">Customer Payment Form</h1> -->
+    
+    <div class="row" style="margin-top: 5em;">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default credit-card-box">
+                <div class="panel-heading display-table" >
+                        <h3 class="panel-title" >Customer Payment Details</h3>
                 </div>
-              </form>
-            </div>
-
-
-</div>
-
+                <div class="panel-body">
+    
+                    @if (Session::has('success'))
+                        <div class="alert alert-success text-center">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                            <p>{{ Session::get('success') }}</p>
+                        </div>
+                    @endif
+    
+                    <form 
+                            role="form" 
+                            action="{{ route('stripe.post') }}" 
+                            method="post" 
+                            class="require-validation"
+                            data-cc-on-file="false"
+                            data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+                            id="payment-form">
+                        @csrf
+    
+                        <div class='form-row row'>
+                            <div class='col-xs-12 form-group required'>
+                                <label class='control-label'>Name on Card</label> <input
+                                    class='form-control' name="names" size='4' type='text'>
+                            </div>
+                        </div>
+    
+                        <div class='form-row row'>
+                            <div class='col-xs-12 form-group card required'>
+                                <label class='control-label'>Card Number</label> <input
+                                    autocomplete='off' name="cardNumber" class='form-control card-number' size='20'
+                                    type='text'>
+                            </div>
+                        </div>
+                        <div class='form-row row'>
+                            <div class='col-xs-12 form-group'>
+                                <label class='control-label'>Email</label> <input
+                                    autocomplete='on' class='form-control' size='200' name="email"
+                                    type='email'>
+                            </div>
+                            <small class="text-danger">{{ $errors->first('email') }}</small>
+                        </div>
+                        <div class='form-row row'>
+                            <div class='col-xs-12 form-group'>
+                                <label class='control-label'>Amount</label> <input
+                                    autocomplete='on' class='form-control' size='200' name="amount"
+                                    type='number'>
+                            </div>
+                            <small class="text-danger">{{ $errors->first('amount') }}</small>
+                        </div>
+                       
+                       
+    
+                        <div class='form-row row'>
+                            <div class='col-xs-12 col-md-4 form-group cvc required'>
+                                <label class='control-label'>CVC</label> <input autocomplete='off'
+                                    class='form-control card-cvc' placeholder='ex. 311' size='4'
+                                    type='text'>
+                            </div>
+                            <div class='col-xs-12 col-md-4 form-group expiration required'>
+                                <label class='control-label'>Expiration Month</label> <input
+                                    class='form-control card-expiry-month' placeholder='MM' size='2'
+                                    type='text'>
+                            </div>
+                            <div class='col-xs-12 col-md-4 form-group expiration required'>
+                                <label class='control-label'>Expiration Year</label> <input
+                                    class='form-control card-expiry-year' placeholder='YYYY' size='4'
+                                    type='text'>
+                            </div>
+                        </div>
+    
+                        <div class='form-row row'>
+                            <div class='col-md-12 error form-group hide'>
+                                <div class='alert-danger alert'>Please correct the errors and try
+                                    again.</div>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button>
+                            </div>
+                        </div>
+                            
+                    </form>
+                </div>
+            </div>        
         </div>
-      </div>
-    </section>
+    </div>
+        
+</div>
+    
+</body>
+</section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -517,5 +509,87 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
-</body>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+	        
+	    
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    
+<script type="text/javascript">
+  
+$(function() {
+  
+    /*------------------------------------------
+    --------------------------------------------
+    Stripe Payment Code
+    --------------------------------------------
+    --------------------------------------------*/
+    
+    var $form = $(".require-validation");
+     
+    $('form.require-validation').bind('submit', function(e) {
+        var $form = $(".require-validation"),
+        inputSelector = ['input[type=email]', 'input[type=password]',
+                         'input[type=text]', 'input[type=file]',
+                         'textarea'].join(', '),
+        $inputs = $form.find('.required').find(inputSelector),
+        $errorMessage = $form.find('div.error'),
+        valid = true;
+        $errorMessage.addClass('hide');
+    
+        $('.has-error').removeClass('has-error');
+        $inputs.each(function(i, el) {
+          var $input = $(el);
+          if ($input.val() === '') {
+            $input.parent().addClass('has-error');
+            $errorMessage.removeClass('hide');
+            e.preventDefault();
+          }
+        });
+     
+        if (!$form.data('cc-on-file')) {
+          e.preventDefault();
+          Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+          Stripe.createToken({
+            number: $('.card-number').val(),
+            cvc: $('.card-cvc').val(),
+            exp_month: $('.card-expiry-month').val(),
+            exp_year: $('.card-expiry-year').val()
+          }, stripeResponseHandler);
+        }
+    
+    });
+      
+    /*------------------------------------------
+    --------------------------------------------
+    Stripe Response Handler
+    --------------------------------------------
+    --------------------------------------------*/
+    function stripeResponseHandler(status, response) {
+        if (response.error) {
+            $('.error')
+                .removeClass('hide')
+                .find('.alert')
+                .text(response.error.message);
+        } else {
+            /* token contains id, last4, and card type */
+            var token = response['id'];
+                 
+            $form.find('input[type=text]').empty();
+            $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+            $form.get(0).submit();
+        }
+    }
+     
+});
+</script>
 </html>

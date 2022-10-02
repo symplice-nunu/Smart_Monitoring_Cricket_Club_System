@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -159,7 +158,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Managers
@@ -180,13 +179,13 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('playgroundManager') }}" class="nav-link ">
+                <a href="{{ url('playgroundManager') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Playground Manager</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('clubManager') }}" class="nav-link ">
+                <a href="{{ url('clubManager') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Club Manager</p>
                 </a>
@@ -204,7 +203,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
             </a>
           </li> -->
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Members
@@ -219,7 +218,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('members') }}" class="nav-link active">
+                <a href="{{ url('members') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Members List</p>
                 </a>
@@ -257,7 +256,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               
             </ul>
           </li><li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Playground Application
@@ -272,7 +271,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('playground') }}" class="nav-link">
+                <a href="{{ url('playground') }}" class="nav-link active">
                   <i class="fas fa-check nav-icon"></i>
                   <p>All Applications</p>
                 </a>
@@ -341,125 +340,291 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Edit Member</h1>
+            <h1 class="m-0">Playground</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Edit Member</li>
+              <li class="breadcrumb-item active">Playground</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    <div class="container">
+  
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">New Member</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          
+
+
+
+<div class="row">
+
     
+@if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+
+    <form action="{{ route('members.store') }}" method="POST">
+    	@csrf
+
+
+         <div class="row">
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>First Name</strong>
+		            <input type="text" name="FirstName" class="form-control" placeholder="First Name">
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Last Name</strong>
+		            <input type="text" name="LastName" class="form-control" placeholder="Last Name">
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Gender</strong>
+                    <select name="Gender" id="" class="form-control">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Email</strong>
+		            <input type="email" name="Email" class="form-control" placeholder="Email">
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Country</strong>
+                    
+                    <select name="Country" id="" class="form-control">
+                        <option value="">Select Country</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="Burundi">Burundi</option>
+                    </select>
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Phone</strong>
+		            <input type="text" name="Phone" class="form-control" placeholder="Phone">
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Address</strong>
+		            <input type="text" name="Address" class="form-control" placeholder="Address">
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Martal Status</strong>
+                    <select name="MartalStatus" id="" class="form-control">
+                        <option value="">Select Martal Status</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Spouce">Spouce</option>
+                    </select>
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Membership Type</strong>
+                    <select name="MembershipType" id="" class="form-control">
+                        <option value="">Select Membership Type</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Roles</strong>
+                    <select name="Roles" id="" class="form-control">
+                        <option value="">Select Roles</option>
+                        <option value="Capitain">Capitain</option>
+                        <option value="Club Manager">Club Manager</option>
+                    </select>
+		        </div>
+		    </div>
+		    <!-- <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+		            <button type="submit" class="btn btn-primary">Submit</button>
+		    </div> -->
+		</div>
+
+
+    
+    
+
+</div>
+
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
     <!-- Main content -->
     <section class="content">
       <div class="container">
-        <div class="card" style="padding: 1em; padding-left: 15em;">
+        <div class="card" style="padding: 1em;">
           
 <div class="row">
 
-	
+<div class="col-lg-12 margin-tb">
 
-@if ($errors->any())
-<div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
+    <div class="pull-left">
+
+        <h2>Application for using Playground List</h2>
+
+    </div>
+
+    <div class="pull-right" style="margin-bottom: 1em;">
+
+        <!-- <a class="btn btn-success" href="{{ route('users.create') }}"> </a> -->
+        <a href="{{ url('generate-play-pdf') }}" class="btn btn-primary">
+        <i class="fas fa-download"></i> Download
+</a>
+  
+<div style=" text-align: right;">
+                <input id="myInput" class="form-control col-lg-3" type="text" placeholder="Search.." style="height: 2em; margin-left: 49.8em;  margin-top: -2.3em;">
+    </div>
+    </div>
+
 </div>
+
+</div>
+@if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+
+@if ($message = Session::get('success'))
+
+<div class="alert alert-success">
+
+<p>{{ $message }}</p>
+
+</div>
+
 @endif
 
 
-<div class="card card-primary col-xs-8 col-sm-8">
-              <div class="card-header">
-                <h3 class="card-title">Edit Member</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form action="{{ route('members.update',$member->id) }}" method="POST">
+
+<table class="table table-bordered">
+<thead>
+<tr>
+    <th>No</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Date</th>
+    <th>End</th>
+    <!-- <th>Martal Status</th> -->
+    <!-- <th>Membership Type</th> -->
+    <!-- <th>Roles</th> -->
+    <th width="190px">Action</th>
+</tr>
+</thead>
+<tbody id="myTable">
+@foreach ($playgrounds as $playground)
+<tr>
+  <?php
+  // if($playground->Status == 2){
+  ?>
+  <td>{{ ++$i }}</td>
+  <td>{{ $playground->Name }}</td>
+  <td>{{ $playground->Email }}</td>
+  <td>{{ $playground->DateTimeStart }}</td>
+  <td>{{ $playground->DateTimeEnd }}</td>
+  <!-- <td>{{ $playground->Country }}</td> -->
+  <!-- <td>{{ $playground->Phone }}</td> -->
+  <!-- <td>{{ $playground->Address }}</td> -->
+  <!-- <td>{{ $playground->MartalStatus }}</td> -->
+  <!-- <td>{{ $playground->playgroundshipType }}</td> -->
+  <!-- <td>{{ $playground->Roles }}</td> -->
+  <td>
+    <?php 
+    if($playground->Status == 2){
+    ?>
+        <div class="row">
+        <form action="{{ route('playground.update',$playground->id) }}" method="POST">
 @csrf
 @method('PUT')
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">First Name</label>
-					<input type="text" name="FirstName" class="form-control" value="{{ $member->FirstName }}" placeholder="First Name">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Last Name</label>
-                    <input type="text" name="LastName" class="form-control" value="{{ $member->LastName }}" placeholder="Last Name">
-                  </div>
-				  
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Gender</label>
-                    <select name="Gender" id="" class="form-control" value="">
-                <option value="{{ $member->Gender }}">{{ $member->Gender }}</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Email</label>
-                    <input type="email" name="Email" class="form-control" value="{{ $member->Email }}" placeholder="Email">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Country</label>
-                    <select name="Country" id="" class="form-control" value="">
-                <option value="{{ $member->Country }}">{{ $member->Country }}</option>
-                <option value="Rwanda">Rwanda</option>
-                <option value="Burundi">Burundi</option>
-            </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Phone</label>
-                    <input type="text" name="Phone" class="form-control" value="{{ $member->Phone }}" placeholder="Phone">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Address</label>
-                    <input type="text" name="Address" class="form-control" value="{{ $member->Address }}" placeholder="Address">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Martal Status</label>
-                    <select name="MartalStatus" id="" class="form-control" value="">
-                <option value="{{ $member->MartalStatus }}">{{ $member->MartalStatus }}</option>
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
-                <option value="Spouce">Spouce</option>
-            </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Membership Type</label>
-                    <select name="MembershipType" id="" class="form-control" value="">
-                <option value="{{ $member->MembershipType }}">{{ $member->MembershipType }}</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
-                  </div>
-				  <div class="form-group">
-                    <label for="exampleInputPassword1">Roles</label>
-                    <select name="Roles" id="" class="form-control" value="">
-                <option value="{{ $member->Roles }}">{{ $member->Roles }}</option>
-                <option value="Capitain">Capitain</option>
-                <option value="Club Manager">Club Manager</option>
-            </select>
-                  </div>
-                  
-                <!-- /.card-body -->
+<input type="hidden" name="Status" value="1">
+            @can('member-edit')
+            <button class="btn btn-primary" type="submit"> <i class="fas fa-check"></i></button>
+            @endcan
+            </form> &nbsp;&nbsp;&nbsp;&nbsp;
+            <form action="{{ route('playground.update',$playground->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+            <input type="hidden" name="Status" value="0">
+            @can('member-edit')
+            <button type="submit" class="btn btn-danger"> <i class="fas fa-ban"></i></button>
+            @endcan
+        </form>
+        </div>
+        <?php } else if($playground->Status == 1) { ?>
+          <div style="color: green; font-size: 25px;">
+          <span class="fas fa-check"> <b> Approved</b> </span>
+          </div>
+  </td>
+  <?php } else { ?>
+    <div style="color: red; font-size: 25px;">
+          <span class="fas fa-ban"> <b> Denied</b> </span>
+          </div>
+     <?php } ?>
+ 
+</tr>
+@endforeach
+</tbody>
+</table>
 
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-success"> <i class="fas fa-save"></i> Submit</button>
-				 &nbsp; <a href="{{ route('members.index') }}" class="btn btn-primary" > <i class="fas fa-arrow-left"></i> Back</a>
-                </div>
-              </form>
-            </div>
-
-
-</div>
+<!-- {!! $playgrounds->links() !!} -->
 
         </div>
       </div>
@@ -517,5 +682,15 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 </body>
 </html>

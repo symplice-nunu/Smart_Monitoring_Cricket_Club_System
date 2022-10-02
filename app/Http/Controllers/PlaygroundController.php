@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Member;
+use App\Models\Playground;
 use Illuminate\Http\Request;
 use PDF;
 
-class MemberController extends Controller
+class PlaygroundController extends Controller
 
 { 
     function __construct()
@@ -24,45 +24,37 @@ class MemberController extends Controller
 
     public function generatePDF()
     {
-        $members = Member::latest()->paginate(5);
+        $playgrounds = Playground::latest()->paginate(5);
           
-        $pdf = PDF::loadView('members/indexPDF',compact('members'));
+        $pdf = PDF::loadView('playground/indexPDF',compact('playgrounds'));
     
-        return $pdf->download('Members.pdf');
+        return $pdf->download('Playgrounds.pdf');
     }
-    public function generateNewAppPDF()
+    public function generateDPlPDF()
     {
-        $members = Member::latest()->paginate(5);
+        $playgrounds = Playground::latest()->paginate(5);
           
-        $pdf = PDF::loadView('memberss/indexPDF',compact('members'));
+        $pdf = PDF::loadView('playground/indexxxPDF',compact('playgrounds'));
     
-        return $pdf->download('Membership Application.pdf');
-    }
-    public function generateAppPDF()
-    {
-        $members = Member::latest()->paginate(5);
-          
-        $pdf = PDF::loadView('memberss/indexxPDF',compact('members'));
-    
-        return $pdf->download('Approved Application.pdf');
+        return $pdf->download('Playgrounds.pdf');
     }
     
-    public function generateAppDPDF()
+    public function generateAPlPDF()
     {
-        $members = Member::latest()->paginate(5);
+        $playgrounds = Playground::latest()->paginate(5);
           
-        $pdf = PDF::loadView('memberss/indexxxPDF',compact('members'));
+        $pdf = PDF::loadView('playground/indexxPDF',compact('playgrounds'));
     
-        return $pdf->download('Denied Application.pdf');
+        return $pdf->download('Playgrounds.pdf');
     }
 
     public function index()
 
     {
 
-        $members = Member::latest()->paginate(5);
+       $playgrounds = Playground::latest()->paginate(5);
 
-        return view('members.index',compact('members'))
+        return view('playground.indexWaiting',compact('playgrounds'))
 
             ->with('i', (request()->input('page', 1) - 1) * 5);
 
@@ -72,9 +64,9 @@ class MemberController extends Controller
 
     {
 
-        $members = Member::latest()->paginate(5);
+       $playgrounds = Playground::latest()->paginate(5);
 
-        return view('memberss.indexApproved',compact('members'))
+        return view('playground.indexApproved',compact('playgrounds'))
 
             ->with('i', (request()->input('page', 1) - 1) * 5);
 
@@ -83,9 +75,9 @@ class MemberController extends Controller
 
     {
 
-        $members = Member::latest()->paginate(5);
+       $playgrounds = Playground::latest()->paginate(5);
 
-        return view('memberss.indexWaiting',compact('members'))
+        return view('memberss.indexWaiting',compact('playgrounds'))
 
             ->with('i', (request()->input('page', 1) - 1) * 5);
 
@@ -94,9 +86,9 @@ class MemberController extends Controller
 
     {
 
-        $members = Member::latest()->paginate(5);
+       $playgrounds = Playground::latest()->paginate(5);
 
-        return view('memberss.indexDeny',compact('members'))
+        return view('playground.indexDeny',compact('playgrounds'))
 
             ->with('i', (request()->input('page', 1) - 1) * 5);
 
@@ -105,7 +97,7 @@ class MemberController extends Controller
     public function create()
 
     {
-        return view('members.create');
+        return view('playground.create');
 
     }
 
@@ -114,23 +106,17 @@ class MemberController extends Controller
     {
 
         request()->validate([
-            'FirstName' => 'required',
-            'LastName' => 'required',
-            'Gender' => 'required',
+            'Name' => 'required',
             'Email' => 'required',
-            'Country' => 'required',
-            'Phone' => 'required',
-            'Address' => 'required',
-            'MartalStatus' => 'required',
-            'MembershipType' => 'required',
+            'DateTimeStart' => 'required',
         ]);
-        Member::create($request->all());
+        Playground::create($request->all());
 
     
 
-        return redirect()->route('members.index')
+        return redirect()->route('playground.index')
 
-                        ->with('success','Member created successfully.');
+                        ->with('success','Application for using Playground Submitted Successfully.');
 
     }
 
@@ -150,7 +136,7 @@ class MemberController extends Controller
 
     }
 
-    public function update(Request $request, Member $member)
+    public function update(Request $request, Playground $playground)
 
     {
 
@@ -166,11 +152,11 @@ class MemberController extends Controller
             // 'MembershipType' => 'required',
         ]);
 
-        $member->update($request->all());
+        $playground->update($request->all());
 
-        return redirect()->route('members.index')
+        return redirect()->route('playground.index')
 
-                        ->with('success','Member updated successfully');
+                        ->with('success','Your Request Approved');
 
     }
     public function updatee(Request $request, Member $member)

@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +46,7 @@
         <a href="index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Members</a>
+        <a href="#" class="nav-link">Playground</a>
       </li>
     </ul>
 
@@ -60,9 +59,6 @@
             </a>
             
         </li>
-
-        
-        
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
             <i class="fas fa-user"> &nbsp; {{ Auth::user()->name }}</i>
@@ -159,7 +155,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Managers
@@ -180,13 +176,13 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('playgroundManager') }}" class="nav-link ">
+                <a href="{{ url('playgroundManager') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Playground Manager</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('clubManager') }}" class="nav-link ">
+                <a href="{{ url('clubManager') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Club Manager</p>
                 </a>
@@ -204,7 +200,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
             </a>
           </li> -->
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Members
@@ -219,7 +215,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('members') }}" class="nav-link active">
+                <a href="{{ url('members') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Members List</p>
                 </a>
@@ -257,7 +253,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               
             </ul>
           </li><li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Playground Application
@@ -266,7 +262,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('playground.create') }}" class="nav-link">
+                <a href="{{ route('playground.create') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>New Application</p>
                 </a>
@@ -341,12 +337,12 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Edit Member</h1>
+            <h1 class="m-0">Application for using Playground</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Edit Member</li>
+              <li class="breadcrumb-item active">	Playground</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -377,83 +373,37 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
 
 <div class="card card-primary col-xs-8 col-sm-8">
               <div class="card-header">
-                <h3 class="card-title">Edit Member</h3>
+                <h3 class="card-title">Application for using Playground</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{ route('members.update',$member->id) }}" method="POST">
+              <form action="{{ route('playground.store') }}" method="POST">
 @csrf
-@method('PUT')
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">First Name</label>
-					<input type="text" name="FirstName" class="form-control" value="{{ $member->FirstName }}" placeholder="First Name">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Last Name</label>
-                    <input type="text" name="LastName" class="form-control" value="{{ $member->LastName }}" placeholder="Last Name">
-                  </div>
-				  
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Gender</label>
-                    <select name="Gender" id="" class="form-control" value="">
-                <option value="{{ $member->Gender }}">{{ $member->Gender }}</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
+                    <label for="exampleInputEmail1">Name</label>
+					<input type="text" name="Name" class="form-control" value="{{ Auth::user()->name }}" readonly  placeholder="Name">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Email</label>
-                    <input type="email" name="Email" class="form-control" value="{{ $member->Email }}" placeholder="Email">
+                    <input type="email" name="Email" class="form-control" value="{{ Auth::user()->email }}" readonly placeholder="Email">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Country</label>
-                    <select name="Country" id="" class="form-control" value="">
-                <option value="{{ $member->Country }}">{{ $member->Country }}</option>
-                <option value="Rwanda">Rwanda</option>
-                <option value="Burundi">Burundi</option>
-            </select>
+                    <label for="exampleInputPassword1">Date and Time</label>
+                    <input type="datetime-local" name="DateTimeStart" class="form-control"  placeholder="DateTimeStart">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Phone</label>
-                    <input type="text" name="Phone" class="form-control" value="{{ $member->Phone }}" placeholder="Phone">
+                    <label for="exampleInputPassword1">End</label>
+                    <input type="datetime-local" name="DateTimeEnd" class="form-control"  placeholder="DateTimeEnd">
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Address</label>
-                    <input type="text" name="Address" class="form-control" value="{{ $member->Address }}" placeholder="Address">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Martal Status</label>
-                    <select name="MartalStatus" id="" class="form-control" value="">
-                <option value="{{ $member->MartalStatus }}">{{ $member->MartalStatus }}</option>
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
-                <option value="Spouce">Spouce</option>
-            </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Membership Type</label>
-                    <select name="MembershipType" id="" class="form-control" value="">
-                <option value="{{ $member->MembershipType }}">{{ $member->MembershipType }}</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
-                  </div>
-				  <div class="form-group">
-                    <label for="exampleInputPassword1">Roles</label>
-                    <select name="Roles" id="" class="form-control" value="">
-                <option value="{{ $member->Roles }}">{{ $member->Roles }}</option>
-                <option value="Capitain">Capitain</option>
-                <option value="Club Manager">Club Manager</option>
-            </select>
-                  </div>
+                  
+                  <input type="hidden" value="2" name="Status">
                   
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-success"> <i class="fas fa-save"></i> Submit</button>
-				 &nbsp; <a href="{{ route('members.index') }}" class="btn btn-primary" > <i class="fas fa-arrow-left"></i> Back</a>
+                  <button type="submit" class="btn btn-success"> <i class="fas fa-save"></i> Submit Application</button>
+				 &nbsp; <a href="{{ route('playground.index') }}" class="btn btn-primary" > <i class="fas fa-arrow-left"></i> Back</a>
                 </div>
               </form>
             </div>

@@ -68,9 +68,39 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
+            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+            <i class="fas fa-expand"></i>
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" data-widget="control-sidebar" href="#" role="button">
+            <i class="fas fa-cog"></i>
+            </a>
+        </li>
+        <!-- <a class="dropdown-item" href="{{ route('logout') }}"
+
+onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+
+ {{ __('Logout') }}
+
+</a> -->
+
+
+
+
+        <li class="nav-item">
+            <a class="nav-link" data-controlsidebar-slide="true" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="fas fa-sign-out">Logout</i>
             </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+
+ @csrf
+
+</form>
+            <!-- <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="{{ route('logout') }}" role="button">
+            <i class="fas fa-sign-out">Logout</i>
+            </a> -->
         </li>
         </ul>
   </nav>
@@ -182,7 +212,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{ route('members.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>New Member</p>
                 </a>
@@ -206,19 +236,54 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{ url('waitingApproval') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>New Application</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{ url('approved') }}" class="nav-link">
                   <i class="fas fa-check nav-icon"></i>
                   <p>Approved Application</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
+                <a href="{{ url('denyApproval') }}" class="nav-link">
+                  <i class="fas fa-ban"></i>
+                  <p>Denied Application</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li><li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Playground Application
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('playground.create') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>New Application</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('playground') }}" class="nav-link">
+                  <i class="fas fa-check nav-icon"></i>
+                  <p>All Applications</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('approvedPlay') }}" class="nav-link">
+                  <i class="fas fa-check nav-icon"></i>
+                  <p>Approved Application</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('denyApprovalPlay') }}" class="nav-link">
                   <i class="fas fa-ban"></i>
                   <p>Denied Application</p>
                 </a>
@@ -226,8 +291,9 @@
               
             </ul>
           </li>
+          
           <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="{{ url('playgroundStatus') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Playground Status</p>
                 </a>
@@ -246,10 +312,15 @@
                       <p>Roles</p>
                     </a>
                   </li>
-                  
+                  <li class="nav-item">
+                    <a href="{{ url('stripe') }}" class="nav-link">
+                      <i class="fas fa-wallet nav-icon"></i>
+                      <p>Make Payment</p>
+                    </a>
+                  </li>
               
               <li class="nav-item">
-                    <a href="./index3.html" class="nav-link">
+                    <a href="{{ url('payments') }}" class="nav-link">
                       <i class="fas fa-wallet nav-icon"></i>
                       <p>Payments</p>
                     </a>
@@ -432,7 +503,12 @@
         <!-- <a class="btn btn-success" href="{{ route('users.create') }}"> </a> -->
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
         <i class="fas fa-plus"></i> New Stadium Manager
-  </button>
+  </button> &nbsp;&nbsp;&nbsp;
+  <a href="{{ url('generate-manager-pdf') }}" class="btn btn-primary">
+        <i class="fas fa-download"></i> Download
+</a>
+<div style=" text-align: right;">
+                <input id="myInput" class="form-control col-lg-3" type="text" placeholder="Search.." style="height: 2em; margin-left: 49.1em;  margin-top: -2.3em;">
     </div>
 
 </div>
@@ -455,15 +531,10 @@
 <div class="alert alert-success">
 
 <p>{{ $message }}</p>
-
 </div>
-
 @endif
-
-
-
 <table class="table table-bordered">
-
+  <thead>
 <tr>
     <th>No</th>
     <th>First Name</th>
@@ -471,13 +542,10 @@
     <th>Gender</th>
     <th>Email</th>
     <th>Phone</th>
-    <!-- <th>Address</th> -->
-    <!-- <th>Martal Status</th> -->
-    <!-- <th>Membership Type</th> -->
-    <!-- <th>Roles</th> -->
     <th width="190px">Action</th>
 </tr>
-
+</thead>
+<tbody id="myTable">
 @foreach ($managers as $manager)
 <tr>
   <td>{{ ++$i }}</td>
@@ -485,12 +553,7 @@
   <td>{{ $manager->LastName }}</td>
   <td>{{ $manager->Gender }}</td>
   <td>{{ $manager->Email }}</td>
-  <!-- <td>{{ $manager->Country }}</td> -->
   <td>{{ $manager->Phone }}</td>
-  <!-- <td>{{ $manager->Address }}</td> -->
-  <!-- <td>{{ $manager->MartalStatus }}</td> -->
-  <!-- <td>{{ $manager->managershipType }}</td> -->
-  <!-- <td>{{ $manager->Roles }}</td> -->
   <td>
         <form action="{{ route('managers.destroy',$manager->id) }}" method="POST">
             <!-- <a class="btn btn-info" href="{{ route('managers.show',$manager->id) }}">Show</a> -->
@@ -508,10 +571,11 @@
   </td>
 </tr>
 @endforeach
+</tbody>
 
 </table>
 
-{!! $managers->links() !!}
+<!-- {!! $managers->links() !!} -->
 
         </div>
       </div>
@@ -569,5 +633,16 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 </body>
 </html>

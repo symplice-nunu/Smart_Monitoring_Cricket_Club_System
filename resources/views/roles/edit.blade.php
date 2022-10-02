@@ -68,9 +68,39 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
+            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+            <i class="fas fa-expand"></i>
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" data-widget="control-sidebar" href="#" role="button">
+            <i class="fas fa-cog"></i>
+            </a>
+        </li>
+        <!-- <a class="dropdown-item" href="{{ route('logout') }}"
+
+onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+
+ {{ __('Logout') }}
+
+</a> -->
+
+
+
+
+        <li class="nav-item">
+            <a class="nav-link" data-controlsidebar-slide="true" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="fas fa-sign-out">Logout</i>
             </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+
+ @csrf
+
+</form>
+            <!-- <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="{{ route('logout') }}" role="button">
+            <i class="fas fa-sign-out">Logout</i>
+            </a> -->
         </li>
         </ul>
   </nav>
@@ -118,18 +148,49 @@
                   <p>Dashboard</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="./index2.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Playground Manager</p>
+                </a>
+              </li> -->
+              
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Managers
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('managers.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Managers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('stadiumManager') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Stadium Manager</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('playgroundManager') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Playground Manager</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="nav-icon fas fa-book"></i>
-                  <p>Stadium Manager</p>
+                <a href="{{ url('clubManager') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Club Manager</p>
                 </a>
               </li>
+              
             </ul>
           </li>
           <!-- <li class="nav-item">
@@ -151,7 +212,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{ route('members.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>New Member</p>
                 </a>
@@ -175,19 +236,54 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{ url('waitingApproval') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>New Application</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{ url('approved') }}" class="nav-link">
                   <i class="fas fa-check nav-icon"></i>
                   <p>Approved Application</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
+                <a href="{{ url('denyApproval') }}" class="nav-link">
+                  <i class="fas fa-ban"></i>
+                  <p>Denied Application</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li><li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Playground Application
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('playground.create') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>New Application</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('playground') }}" class="nav-link">
+                  <i class="fas fa-check nav-icon"></i>
+                  <p>All Applications</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('approvedPlay') }}" class="nav-link">
+                  <i class="fas fa-check nav-icon"></i>
+                  <p>Approved Application</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('denyApprovalPlay') }}" class="nav-link">
                   <i class="fas fa-ban"></i>
                   <p>Denied Application</p>
                 </a>
@@ -195,8 +291,9 @@
               
             </ul>
           </li>
+          
           <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="{{ url('playgroundStatus') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Playground Status</p>
                 </a>
@@ -215,10 +312,15 @@
                       <p>Roles</p>
                     </a>
                   </li>
-                  
+                  <li class="nav-item">
+                    <a href="{{ url('stripe') }}" class="nav-link">
+                      <i class="fas fa-wallet nav-icon"></i>
+                      <p>Make Payment</p>
+                    </a>
+                  </li>
               
               <li class="nav-item">
-                    <a href="./index3.html" class="nav-link">
+                    <a href="{{ url('payments') }}" class="nav-link">
                       <i class="fas fa-wallet nav-icon"></i>
                       <p>Payments</p>
                     </a>

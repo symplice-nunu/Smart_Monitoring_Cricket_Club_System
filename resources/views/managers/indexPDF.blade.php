@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF</title>
     <style>
-        <!DOCTYPE html>
-<html>
-<head>
 <style>
 #customers {
   font-family: Arial, Helvetica, sans-serif;
@@ -17,7 +14,7 @@
 }
 
 #customers td, #customers th {
-  border: 1px solid #ddd;
+  border: 0px solid #ddd;
   padding: 8px;
 }
 
@@ -32,15 +29,39 @@
   background-color: #04AA6D;
   color: white;
 }
+.logo{
+  border-radius: 5em;
+}
     </style>
 </head>
 <body>
+
+<div >
     
 
-   <div class="card" style="padding: 0.5em; margin-top: 2.5em;">
-   <div class="container"  align="center">
+</div>
+   <div class="card" style="padding: 0.5em;">
+   <div class="container">
+   
    <div class="pull-left">
-                <h2>E-Kinamba Cleaners List</h2>
+<p>
+  <table width="100%">
+    <tr>
+      <td><img src="images/cricket.jpg" alt="" height="60" weight="60" class="logo"></td>
+      <td align="right"><h2> &nbsp;&nbsp;&nbsp; Smart Cricket Club Monitoring System</h2></p>
+    
+    </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td align="right">
+      <p>Kigali, Kicukiro, Gahanga</p>
+    <p>Gahanga Olympic Stadium</p>
+      </td>
+    </tr>
+  </table>
+   
+                <h2 align="center">Managers List</h2></p>
     </div> <br>
  
     
@@ -49,22 +70,26 @@
     
 <table class="table table-bordered" id="customers" align="center">
     
+
 <tr>
-            
-            <th style="backgroung-color: red;">No</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Address</th>
-        </tr>
-	    @foreach ($cleaners as $cleaner)
-	    <tr>
-	        <td>{{ $cleaner->id }}</td>
-	        <td>{{ $cleaner->Name }}</td>
-	        <td>{{ $cleaner->Phone }}</td>
-	        <td>{{ $cleaner->Address }}</td>
-	       
-	    </tr>
-	    @endforeach
+    <th>No</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Gender</th>
+    <th>Email</th>
+    <th>Phone</th>
+</tr>
+
+@foreach ($managers as $manager)
+<tr>
+  <td>{{ $manager->id }}</td>
+  <td>{{ $manager->FirstName }}</td>
+  <td>{{ $manager->LastName }}</td>
+  <td>{{ $manager->Gender }}</td>
+  <td>{{ $manager->Email }}</td>
+  <td>{{ $manager->Phone }}</td>
+</tr>
+@endforeach
     </table>
 </div>
 

@@ -61,7 +61,7 @@
     </tr>
   </table>
    
-                <h2 align="center">Members List</h2></p>
+                <h2 align="center">Denied Application List</h2></p>
     </div> <br>
  
     
@@ -73,22 +73,28 @@
 
 <tr>
 <th>No</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Gender</th>
+    <th>Name</th>
     <th>Email</th>
-    <th>Phone</th>
+    <th>Date</th>
+    <th>End</th>
 </tr>
 
-@foreach ($members as $member)
+@foreach ($playgrounds as $playground)
 <tr>
-  <td>{{ $member->id }}</td>
-  <td>{{ $member->FirstName }}</td>
-  <td>{{ $member->LastName }}</td>
-  <td>{{ $member->Gender }}</td>
-  <td>{{ $member->Email }}</td>
-  <!-- <td>{{ $member->Country }}</td> -->
-  <td>{{ $member->Phone }}</td>
+  <?php
+if($playground->Status == 0){
+  ?>
+ 
+<tr>
+  <?php
+  // if($playground->Status == 2){
+  ?>
+  <td>{{ $playground->id }}</td>
+  <td>{{ $playground->Name }}</td>
+  <td>{{ $playground->Email }}</td>
+  <td>{{ $playground->DateTimeStart }}</td>
+  <td>{{ $playground->DateTimeEnd }}</td>
+  <?php } ?>
 </tr>
 @endforeach
     </table>

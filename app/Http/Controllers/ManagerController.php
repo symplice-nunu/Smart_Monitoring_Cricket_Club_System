@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Manager;
 use Illuminate\Http\Request;
+use PDF;
 
 class ManagerController extends Controller
 
@@ -19,6 +20,15 @@ class ManagerController extends Controller
 
          $this->middleware('permission:manager-delete', ['only' => ['destroy']]);
 
+    }
+
+    public function generateManagerPDF()
+    {
+        $managers = Manager::latest()->paginate(5);
+          
+        $pdf = PDF::loadView('managers/indexPDF',compact('managers'));
+    
+        return $pdf->download('Managers.pdf');
     }
 
     public function index()
@@ -65,6 +75,29 @@ class ManagerController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 5);
 
     }
+    public function generateindexxxxPDF()
+    {
+        $managers = Manager::latest()->paginate(5);
+          
+        $pdf = PDF::loadView('managers/indexxxxPDF',compact('managers'));
+    
+        return $pdf->download('Managers.pdf');
+    } public function generateindexxxPDF()
+    {
+        $managers = Manager::latest()->paginate(5);
+          
+        $pdf = PDF::loadView('managers/indexxxPDF',compact('managers'));
+    
+        return $pdf->download('Managers.pdf');
+    } public function generateindexxPDF()
+    {
+        $managers = Manager::latest()->paginate(5);
+          
+        $pdf = PDF::loadView('managers/indexxPDF',compact('managers'));
+    
+        return $pdf->download('Managers.pdf');
+    }
+
 
     public function create()
 

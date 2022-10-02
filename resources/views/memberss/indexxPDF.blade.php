@@ -61,7 +61,7 @@
     </tr>
   </table>
    
-                <h2 align="center">Members List</h2></p>
+                <h2 align="center">Approved Application List</h2></p>
     </div> <br>
  
     
@@ -78,10 +78,14 @@
     <th>Gender</th>
     <th>Email</th>
     <th>Phone</th>
+    <th>Address</th>
 </tr>
 
 @foreach ($members as $member)
 <tr>
+  <?php
+if($member->Status == 1){
+  ?>
   <td>{{ $member->id }}</td>
   <td>{{ $member->FirstName }}</td>
   <td>{{ $member->LastName }}</td>
@@ -89,6 +93,8 @@
   <td>{{ $member->Email }}</td>
   <!-- <td>{{ $member->Country }}</td> -->
   <td>{{ $member->Phone }}</td>
+  <td>{{ $member->Address }}</td>
+  <?php } ?>
 </tr>
 @endforeach
     </table>

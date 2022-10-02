@@ -61,7 +61,7 @@
     </tr>
   </table>
    
-                <h2 align="center">Members List</h2></p>
+                <h2 align="center">Stadium Manager List</h2></p>
     </div> <br>
  
     
@@ -80,15 +80,19 @@
     <th>Phone</th>
 </tr>
 
-@foreach ($members as $member)
+@foreach ($managers as $manager)
 <tr>
-  <td>{{ $member->id }}</td>
-  <td>{{ $member->FirstName }}</td>
-  <td>{{ $member->LastName }}</td>
-  <td>{{ $member->Gender }}</td>
-  <td>{{ $member->Email }}</td>
-  <!-- <td>{{ $member->Country }}</td> -->
-  <td>{{ $member->Phone }}</td>
+<?php
+if($manager->ManagerType == 'Stadium Manager'){
+  ?>
+  <td>{{ $manager->id }}</td>
+  <td>{{ $manager->FirstName }}</td>
+  <td>{{ $manager->LastName }}</td>
+  <td>{{ $manager->Gender }}</td>
+  <td>{{ $manager->Email }}</td>
+  <td>{{ $manager->Phone }}</td>
+  
+  <?php } ?>
 </tr>
 @endforeach
     </table>

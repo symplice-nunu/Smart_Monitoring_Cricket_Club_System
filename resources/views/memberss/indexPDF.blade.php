@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF</title>
     <style>
-        <!DOCTYPE html>
-<html>
-<head>
 <style>
 #customers {
   font-family: Arial, Helvetica, sans-serif;
@@ -17,7 +14,7 @@
 }
 
 #customers td, #customers th {
-  border: 1px solid #ddd;
+  border: 0px solid #ddd;
   padding: 8px;
 }
 
@@ -32,15 +29,39 @@
   background-color: #04AA6D;
   color: white;
 }
+.logo{
+  border-radius: 5em;
+}
     </style>
 </head>
 <body>
+
+<div >
     
 
-   <div class="card" style="padding: 0.5em; margin-top: 2.5em;">
-   <div class="container"  align="center">
+</div>
+   <div class="card" style="padding: 0.5em;">
+   <div class="container">
+   
    <div class="pull-left">
-                <h2>E-Kinamba Cleaners List</h2>
+<p>
+  <table width="100%">
+    <tr>
+      <td><img src="images/cricket.jpg" alt="" height="60" weight="60" class="logo"></td>
+      <td align="right"><h2> &nbsp;&nbsp;&nbsp; Smart Cricket Club Monitoring System</h2></p>
+    
+    </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td align="right">
+      <p>Kigali, Kicukiro, Gahanga</p>
+    <p>Gahanga Olympic Stadium</p>
+      </td>
+    </tr>
+  </table>
+   
+                <h2 align="center">New Application List</h2></p>
     </div> <br>
  
     
@@ -49,22 +70,44 @@
     
 <table class="table table-bordered" id="customers" align="center">
     
+
 <tr>
-            
-            <th style="backgroung-color: red;">No</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Address</th>
-        </tr>
-	    @foreach ($cleaners as $cleaner)
-	    <tr>
-	        <td>{{ $cleaner->id }}</td>
-	        <td>{{ $cleaner->Name }}</td>
-	        <td>{{ $cleaner->Phone }}</td>
-	        <td>{{ $cleaner->Address }}</td>
-	       
-	    </tr>
-	    @endforeach
+<th>No</th>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Result</th>
+</tr>
+
+@foreach ($members as $member)
+<tr>
+  <?php
+  // if($member->Status == 2){
+  ?>
+  <td>{{ $member->id }}</td>
+  <td>{{ $member->FirstName }}</td>
+  <td>{{ $member->Gender }}</td>
+  <td>{{ $member->Email }}</td>
+  <!-- <td>{{ $member->Country }}</td> -->
+  <td>{{ $member->Phone }}</td>
+  <td>
+   <?php  if($member->Status == 2){ ?> 
+    <div style="color: blue; font-size: 15px;">
+          <span class="fas fa-check"> <b> Waiting Approval</b> </span>
+          </div>
+  <?php } else if($member->Status == 1) { ?>
+          <div style="color: green; font-size: 20px;">
+          <span class="fas fa-check"> <b> Approved</b> </span>
+          </div>
+  </td>
+  <?php } else { ?>
+    <div style="color: red; font-size: 20px;">
+          <span class="fas fa-ban"> <b> Denied</b> </span>
+          </div>
+     <?php } ?></td>
+</tr>
+@endforeach
     </table>
 </div>
 

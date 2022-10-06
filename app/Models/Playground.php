@@ -19,7 +19,7 @@ class Playground extends Model
     use HasFactory;
     protected $fillable = [
         
-        'Name','Email','DateTimeStart','DateTimeEnd','Status'
+        'Name','Email','DateTimeStart','DateTimeEnd','Status', 'StatusOn', 'StatusOff'
         
     ];
 

@@ -157,6 +157,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               
             </ul>
           </li>
+          @can('stadium-manager-list','stadium-manager-create','stadium-manager-edit','stadium-manager-delete')
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -193,6 +194,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               
             </ul>
           </li>
+          @endcan
           <!-- <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -202,6 +204,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               </p>
             </a>
           </li> -->
+          @can('member-list','member-edit','member-create','member-delete','club-manager-list','club-manager-create','club-manager-edit','club-manager-delete')
           <li class="nav-item">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-copy"></i>
@@ -226,6 +229,8 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               
             </ul>
           </li>
+            @endcan
+            @can('stadium-manager-list','stadium-manager-create','stadium-manager-edit','stadium-manager-delete')
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -255,7 +260,10 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               </li>
               
             </ul>
-          </li><li class="nav-item">
+          </li>
+            @endcan
+            @can('stadium-manager-list','stadium-manager-create','stadium-manager-edit','stadium-manager-delete')
+            <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -291,6 +299,8 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               
             </ul>
           </li>
+           @endcan
+          @can('club-manager-list','club-manager-create','club-manager-edit','club-manager-delete','member-list','member-create','member-edit','member-delete')
           
           <li class="nav-item">
                 <a href="{{ url('playgroundStatus') }}" class="nav-link">
@@ -298,6 +308,8 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                   <p>Playground Status</p>
                 </a>
               </li>
+              @endcan
+              @can('stadium-manager-list','stadium-manager-create','stadium-manager-edit','stadium-manager-delete')
               
           <li class="nav-item">
                 <a href="{{ url('users') }}" class="nav-link">
@@ -305,6 +317,8 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                   <p>Users</p>
                 </a>
               </li>
+              @endcan
+              @can('stadium-manager-list','stadium-manager-create','stadium-manager-edit','stadium-manager-delete')
               
               <li class="nav-item">
                     <a href="{{ url('roles') }}" class="nav-link">
@@ -312,12 +326,17 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                       <p>Roles</p>
                     </a>
                   </li>
+              @endcan
+              
+              @can('make-payment','member-list','member-create','member-edit','member-delete')
                   <li class="nav-item">
                     <a href="{{ url('stripe') }}" class="nav-link">
                       <i class="fas fa-wallet nav-icon"></i>
                       <p>Make Payment</p>
                     </a>
                   </li>
+                  @endcan
+               @can('club-manager-list','club-manager-create','club-manager-edit','club-manager-delete','member-list','member-create','member-edit','member-delete')
               
               <li class="nav-item">
                     <a href="{{ url('payments') }}" class="nav-link">
@@ -325,6 +344,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                       <p>Payments</p>
                     </a>
                   </li>
+                  @endcan
          
         </ul>
       </nav>
@@ -361,7 +381,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
 <div class="row">
 
 	
-
+<!-- 
 @if ($errors->any())
 <div class="alert alert-danger">
     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -371,7 +391,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
         @endforeach
     </ul>
 </div>
-@endif
+@endif -->
 
 
 <div class="card card-primary col-xs-8 col-sm-8">
@@ -387,10 +407,12 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                     <label for="exampleInputEmail1">First Name</label>
 					<input type="text" name="FirstName" class="form-control"  placeholder="First Name">
                   </div>
+            <small class="text-danger">{{ $errors->first('FirstName') }}</small>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Last Name</label>
                     <input type="text" name="LastName" class="form-control"  placeholder="Last Name">
                   </div>
+            <small class="text-danger">{{ $errors->first('LastName') }}</small>
 				  
                   <div class="form-group">
                     <label for="exampleInputPassword1">Gender</label>
@@ -400,10 +422,12 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                 <option value="Female">Female</option>
             </select>
                   </div>
+            <small class="text-danger">{{ $errors->first('Gender') }}</small>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Email</label>
                     <input type="email" name="Email" class="form-control" value="" placeholder="Email">
                   </div>
+            <small class="text-danger">{{ $errors->first('Email') }}</small>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Country</label>
                     <select name="Country" id="" class="form-control" value="">
@@ -412,14 +436,17 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                 <option value="Burundi">Burundi</option>
             </select>
                   </div>
+            <small class="text-danger">{{ $errors->first('Country') }}</small>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Phone</label>
                     <input type="text" name="Phone" class="form-control" placeholder="Phone">
                   </div>
+            <small class="text-danger">{{ $errors->first('Phone') }}</small>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Address</label>
                     <input type="text" name="Address" class="form-control"  placeholder="Address">
                   </div>
+            <small class="text-danger">{{ $errors->first('Address') }}</small>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Martal Status</label>
                     <select name="MartalStatus" id="" class="form-control" value="">
@@ -429,6 +456,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                 <option value="Spouce">Spouce</option>
             </select>
                   </div>
+            <small class="text-danger">{{ $errors->first('MartalStatus') }}</small>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Membership Type</label>
                     <select name="MembershipType" id="" class="form-control" value="">
@@ -438,6 +466,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                 <option value="3">3</option>
             </select>
                   </div>
+            <small class="text-danger">{{ $errors->first('MembershipType') }}</small>
 				  <div class="form-group">
                     <label for="exampleInputPassword1">Roles</label>
                     <select name="Roles" id="" class="form-control" value="">
@@ -446,6 +475,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                 <option value="Club Manager">Club Manager</option>
             </select>
                   </div>
+            <small class="text-danger">{{ $errors->first('Roles') }}</small>
 				  <input type="hidden" value="2" name="Status">
                   
                 <!-- /.card-body -->

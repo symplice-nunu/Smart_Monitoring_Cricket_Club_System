@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('generate-stadium-manager-pdf', [ManagerController::class, 'generateindexxxxPDF']);
     Route::get('generate-playground-manager-pdf', [ManagerController::class, 'generateindexxxPDF']);
     Route::get('generate-club-manager-pdf', [ManagerController::class, 'generateindexxPDF']);
+    Route::get('playgroundStatus', [PlaygroundController::class, 'Status']);
     Route::resource('payments', StripePaymentController::class);
 
     Route::resource('roles', RoleController::class);

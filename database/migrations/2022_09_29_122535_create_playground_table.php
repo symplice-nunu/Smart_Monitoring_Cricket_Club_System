@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('DateTimeStart');
             $table->string('DateTimeEnd');
             $table->string('Status');
+            $table->string('StatusOn');
+            $table->string('StatusOff');
             $table->timestamps();
         });
     }

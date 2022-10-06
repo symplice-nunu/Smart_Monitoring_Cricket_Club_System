@@ -46,7 +46,7 @@
         <a href="index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Members</a>
+        <a href="#" class="nav-link">Status</a>
       </li>
     </ul>
 
@@ -159,7 +159,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
           </li>
           @can('stadium-manager-list','stadium-manager-create','stadium-manager-edit','stadium-manager-delete')
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Managers
@@ -168,7 +168,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('managers.index') }}" class="nav-link active">
+                <a href="{{ route('managers.index') }}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Managers</p>
                 </a>
@@ -194,7 +194,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               
             </ul>
           </li>
-          @endcan
+            @endcan
           <!-- <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -229,7 +229,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               
             </ul>
           </li>
-          @endcan
+            @endcan
             @can('stadium-manager-list','stadium-manager-create','stadium-manager-edit','stadium-manager-delete')
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -260,9 +260,10 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               </li>
               
             </ul>
-          </li> @endcan
+          </li>
+            @endcan
             @can('stadium-manager-list','stadium-manager-create','stadium-manager-edit','stadium-manager-delete')
-          <li class="nav-item">
+            <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -272,7 +273,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('playground.create') }}" class="nav-link">
+                <a href="{{ route('playground.create') }}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>New Application</p>
                 </a>
@@ -298,16 +299,18 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               
             </ul>
           </li>
-          @endcan
+           @endcan
           @can('club-manager-list','club-manager-create','club-manager-edit','club-manager-delete','member-list','member-create','member-edit','member-delete')
+          
           <li class="nav-item">
-                <a href="{{ url('playgroundStatus') }}" class="nav-link">
+                <a href="{{ url('playgroundStatus') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Playground Status</p>
                 </a>
               </li>
               @endcan
               @can('stadium-manager-list','stadium-manager-create','stadium-manager-edit','stadium-manager-delete')
+              
           <li class="nav-item">
                 <a href="{{ url('users') }}" class="nav-link">
                   <i class="fas fa-users"></i>
@@ -316,13 +319,14 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               </li>
               @endcan
               @can('stadium-manager-list','stadium-manager-create','stadium-manager-edit','stadium-manager-delete')
+              
               <li class="nav-item">
                     <a href="{{ url('roles') }}" class="nav-link">
                       <i class="fas fa-user nav-icon"></i>
                       <p>Roles</p>
                     </a>
                   </li>
-                  @endcan
+              @endcan
               
               @can('make-payment','member-list','member-create','member-edit','member-delete')
                   <li class="nav-item">
@@ -333,6 +337,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                   </li>
                   @endcan
                @can('club-manager-list','club-manager-create','club-manager-edit','club-manager-delete','member-list','member-create','member-edit','member-delete')
+              
               <li class="nav-item">
                     <a href="{{ url('payments') }}" class="nav-link">
                       <i class="fas fa-wallet nav-icon"></i>
@@ -355,124 +360,274 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">New Member</h1>
+            <h1 class="m-0">Status</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">	New Member</li>
+              <li class="breadcrumb-item active">Status</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    <div class="container">
+  
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">New Member</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          
+
+
+
+<div class="row">
+
     
+@if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+
+    <form action="" method="POST">
+    	@csrf
+
+
+         <div class="row">
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>First Name</strong>
+		            <input type="text" name="FirstName" class="form-control" placeholder="First Name">
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Last Name</strong>
+		            <input type="text" name="LastName" class="form-control" placeholder="Last Name">
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Gender</strong>
+                    <select name="Gender" id="" class="form-control">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Email</strong>
+		            <input type="email" name="Email" class="form-control" placeholder="Email">
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Country</strong>
+                    
+                    <select name="Country" id="" class="form-control">
+                        <option value="">Select Country</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="Burundi">Burundi</option>
+                    </select>
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Phone</strong>
+		            <input type="text" name="Phone" class="form-control" placeholder="Phone">
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Address</strong>
+		            <input type="text" name="Address" class="form-control" placeholder="Address">
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Martal Status</strong>
+                    <select name="MartalStatus" id="" class="form-control">
+                        <option value="">Select Martal Status</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Spouce">Spouce</option>
+                    </select>
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Membership Type</strong>
+                    <select name="MembershipType" id="" class="form-control">
+                        <option value="">Select Membership Type</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+		        </div>
+		    </div>
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Roles</strong>
+                    <select name="Roles" id="" class="form-control">
+                        <option value="">Select Roles</option>
+                        <option value="Capitain">Capitain</option>
+                        <option value="Club Manager">Club Manager</option>
+                    </select>
+		        </div>
+		    </div>
+		    <!-- <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+		            <button type="submit" class="btn btn-primary">Submit</button>
+		    </div> -->
+		</div>
+
+
+    
+    
+
+</div>
+
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
     <!-- Main content -->
     <section class="content">
       <div class="container">
-        <div class="card" style="padding: 1em; padding-left: 15em;">
+        <div class="card" style="padding: 1em;">
           
 <div class="row">
 
-	
+<div class="col-lg-12 margin-tb">
 
-@if ($errors->any())
-<div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
+    <div class="pull-left">
+
+        <h2>Playground Status</h2>
+
+    </div>
+
+    
+
 </div>
+
+</div>
+@if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+
+@if ($message = Session::get('success'))
+
+<div class="alert alert-success">
+
+<p>{{ $message }}</p>
+
+</div>
+
 @endif
 
 
-<div class="card card-primary col-xs-8 col-sm-8">
-              <div class="card-header">
-                <h3 class="card-title">New Member</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form action="{{ route('members.store') }}" method="POST">
-@csrf
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">First Name</label>
-					<input type="text" name="FirstName" class="form-control"  placeholder="First Name">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Last Name</label>
-                    <input type="text" name="LastName" class="form-control"  placeholder="Last Name">
-                  </div>
-				  
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Gender</label>
-                    <select name="Gender" id="" class="form-control" value="">
-                <option value="">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Email</label>
-                    <input type="email" name="Email" class="form-control" value="" placeholder="Email">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Country</label>
-                    <select name="Country" id="" class="form-control" value="">
-                <option value="">Select Country</option>
-                <option value="Rwanda">Rwanda</option>
-                <option value="Burundi">Burundi</option>
-            </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Phone</label>
-                    <input type="text" name="Phone" class="form-control" placeholder="Phone">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Address</label>
-                    <input type="text" name="Address" class="form-control"  placeholder="Address">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Martal Status</label>
-                    <select name="MartalStatus" id="" class="form-control" value="">
-                <option value="">Select Martal Status</option>
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
-                <option value="Spouce">Spouce</option>
-            </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Membership Type</label>
-                    <select name="MembershipType" id="" class="form-control" value="">
-                <option value="">Select Membership Type</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
-                  </div>
-				  <div class="form-group">
-                    <label for="exampleInputPassword1">Roles</label>
-                    <select name="Roles" id="" class="form-control" value="">
-                <option value="">Select Roles</option>
-                <option value="Capitain">Capitain</option>
-                <option value="Club Manager">Club Manager</option>
-            </select>
-                  </div>
-                  
-                <!-- /.card-body -->
-
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-success"> <i class="fas fa-save"></i> Submit</button>
-				 &nbsp; <a href="{{ route('members.index') }}" class="btn btn-primary" > <i class="fas fa-arrow-left"></i> Back</a>
-                </div>
-              </form>
-            </div>
+<br><br>
 
 
+
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>No</th>
+    <th>Name</th>
+    <th>Email</th>
+</tr>
+</thead>
+<tbody id="myTable">
+@foreach ($playgrounds as $playground)
+<?php if($playground->Status == 1 && $playground->StatusOn == 1){ ?>
+<div class="card">
+<div class="card" style=" padding: 5em; background-color: lightgreen; text-align: center;">
+    <h3>Playground Is Not Active, Occupied By <b>{{ $playground->Name }}</b> 
+   
+    @can('playground-manager-list','playground-manager-create','playground-manager-edit','playground-manager-delete')
+    <form action="{{ route('playground.update',$playground->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+            <input type="hidden" name="StatusOn" value="1">
+            @can('member-edit')
+            <button type="submit" class="btn btn-danger"> <i class="fas fa-ban"></i> Stop</button>
+            @endcan
+        </form>
+        @endcan
+ <?php
+}?>
+</h3>
 </div>
+</div>
+@can('playground-manager-list','playground-manager-create','playground-manager-edit','playground-manager-delete')
+<tr>
+  <?php
+if($playground->Status == 1 && $playground->StatusOn == 0 && $playground->StatusOff == 0){
+  ?>
+ 
+        <td>{{ ++$i }}</td>
+  <td>{{ $playground->Name }}</td>
+  <td>{{ $playground->Email }}</td>
+  <td><div class="row">
+            <form action="{{ route('playground.update',$playground->id) }}" method="POST">
+@csrf
+@method('PUT')
+
+<input type="hidden" name="StatusOn" value="0">
+            @can('member-edit')
+            <button class="btn btn-primary" type="submit"> <i class="fas fa-check"></i> Start</button>
+            @endcan
+            </form>
+        </div></td>
+ <?php
+}?>
+
+</tr>
+@endcan
+@endforeach
+</tbody>
+</table>
+
+<!-- {!! $playgrounds->links() !!} -->
 
         </div>
       </div>
@@ -530,5 +685,15 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 </body>
 </html>

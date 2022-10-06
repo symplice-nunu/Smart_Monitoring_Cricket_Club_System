@@ -12,13 +12,13 @@ class ManagerController extends Controller
 
     {
 
-         $this->middleware('permission:manager-list|manager-create|manager-edit|manager-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:club-manager-list|club-manager-create|club-manager-edit|club-manager-delete', ['only' => ['index','show']]);
 
-         $this->middleware('permission:manager-create', ['only' => ['create','store']]);
+         $this->middleware('permission:club-manager-create', ['only' => ['create','store']]);
 
-         $this->middleware('permission:manager-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:club-manager-edit', ['only' => ['edit','update']]);
 
-         $this->middleware('permission:manager-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:club-manager-delete', ['only' => ['destroy']]);
 
     }
 

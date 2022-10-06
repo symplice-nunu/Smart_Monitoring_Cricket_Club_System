@@ -97,7 +97,7 @@ class StripePaymentController extends Controller
         Mail::send('emails.PaymentsMail', $data, function($message) use ($names, $email) {
             $message->to($email, $names)
             ->subject('Gahanga Olympic Cricket Club');
-            $message->from('intwarisymplice@gmail.com','E-KINAMBA');
+            $message->from('intwarisymplice@gmail.com','GOCCS');
             });
         Payment::create($data);
       

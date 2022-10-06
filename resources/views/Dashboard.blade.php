@@ -166,6 +166,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               
             </ul>
           </li>
+          @can('stadium-manager-list','stadium-manager-create','stadium-manager-edit','stadium-manager-delete')
           <li class="nav-item">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-copy"></i>
@@ -202,6 +203,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               
             </ul>
           </li>
+            @endcan
           <!-- <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -211,6 +213,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               </p>
             </a>
           </li> -->
+          @can('member-list','member-edit','member-create','member-delete','club-manager-list','club-manager-create','club-manager-edit','club-manager-delete')
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -235,6 +238,8 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               
             </ul>
           </li>
+            @endcan
+            @can('stadium-manager-list','stadium-manager-create','stadium-manager-edit','stadium-manager-delete')
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -264,7 +269,10 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               </li>
               
             </ul>
-          </li><li class="nav-item">
+          </li>
+            @endcan
+            @can('stadium-manager-list','stadium-manager-create','stadium-manager-edit','stadium-manager-delete')
+            <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -300,6 +308,8 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
               
             </ul>
           </li>
+           @endcan
+          @can('club-manager-list','club-manager-create','club-manager-edit','club-manager-delete','member-list','member-create','member-edit','member-delete')
           
           <li class="nav-item">
                 <a href="{{ url('playgroundStatus') }}" class="nav-link">
@@ -307,6 +317,8 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                   <p>Playground Status</p>
                 </a>
               </li>
+              @endcan
+              @can('stadium-manager-list','stadium-manager-create','stadium-manager-edit','stadium-manager-delete')
               
           <li class="nav-item">
                 <a href="{{ url('users') }}" class="nav-link">
@@ -314,6 +326,8 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                   <p>Users</p>
                 </a>
               </li>
+              @endcan
+              @can('stadium-manager-list','stadium-manager-create','stadium-manager-edit','stadium-manager-delete')
               
               <li class="nav-item">
                     <a href="{{ url('roles') }}" class="nav-link">
@@ -321,12 +335,17 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                       <p>Roles</p>
                     </a>
                   </li>
+              @endcan
+              
+              @can('make-payment','member-list','member-create','member-edit','member-delete')
                   <li class="nav-item">
                     <a href="{{ url('stripe') }}" class="nav-link">
                       <i class="fas fa-wallet nav-icon"></i>
                       <p>Make Payment</p>
                     </a>
                   </li>
+                  @endcan
+               @can('club-manager-list','club-manager-create','club-manager-edit','club-manager-delete','member-list','member-create','member-edit','member-delete')
               
               <li class="nav-item">
                     <a href="{{ url('payments') }}" class="nav-link">
@@ -334,6 +353,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
                       <p>Payments</p>
                     </a>
                   </li>
+                  @endcan
          
         </ul>
       </nav>
@@ -371,7 +391,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{ $payment }}</h3>
 
                 <p>Payment Made</p>
               </div>
@@ -386,7 +406,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>{{ $members }}<sup style="font-size: 20px">%</sup></h3>
 
                 <p>Approved Membership</p>
               </div>
@@ -401,7 +421,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3>{{ $user }}</h3>
 
                 <p>Users</p>
               </div>
@@ -416,7 +436,7 @@ onclick="event.preventDefault(); document.getElementById('logout-form').submit()
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3>On</h3>
 
                 <p>Playground Status</p>
               </div>

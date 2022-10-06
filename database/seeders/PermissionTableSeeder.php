@@ -20,14 +20,27 @@ class PermissionTableSeeder extends Seeder
            'role-create',
            'role-edit',
            'role-delete',
-           'manager-list',
-           'manager-create',
-           'manager-edit',
-           'manager-delete',
+           'club-manager-list',
+           'club-manager-create',
+           'club-manager-edit',
+           'club-manager-delete',
            'member-list',
            'member-create',
            'member-edit',
-           'member-delete'
+           'member-delete',
+           'playground-manager-list',
+           'playground-manager-create',
+           'playground-manager-edit',
+           'playground-manager-delete',
+           'stadium-manager-list',
+           'stadium-manager-create',
+           'stadium-manager-edit',
+           'stadium-manager-delete',
+           'payments',
+           'make-payment',
+           'playground-status'
+
+           
         ];
       
         foreach ($permissions as $permission) {

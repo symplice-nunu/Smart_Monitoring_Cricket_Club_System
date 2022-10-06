@@ -199,7 +199,9 @@ button:hover{
 <body>
  <div class="content">
     <img src="{{ asset('images/cricket.jpg')}}">
+    
       <div class="text">
+      <h5 style="font-size: 10px;">SMART CRICKET CLUB MONITORING SYSTEM</h5 style="font-size: 10px;">
         LOGIN
      </div>
       
@@ -236,12 +238,15 @@ button:hover{
           <div class="link">
              
              <a href="{{ route('password.request') }}">Forgot Password</a>
-          </div>
+          </div> <br>
+          <div style="font-size: 10px;"> <strong>Copyright &copy; 2022-2023 <a href="#">Sccms</a>.</strong>
+     All rights reserved.</div>
        </form>
 
 
 
       </div>
+      
  
 </body>
 @endsection
